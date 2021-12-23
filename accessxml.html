@@ -1,0 +1,28 @@
+<DOCTYPPE html>
+    <html>
+        <head>
+            <title>Data Mahasiswa</title>
+            <script src = "jaq.js"></script>
+        </head>
+        <body>
+            <h1>Web Service Consuming</h1>
+            <hr>
+            <button onclick="datamahasiswa()">Show data from ulr</button><br><br>
+            <div id="view">Data disini</div>
+            <script>
+                function datamahasiswa(){
+                    let url = "http://localhost:8080/datamahasiswa/xml";
+                    let res = document.getElementById("view");
+                    fetch(url)
+                        .then(response=>{
+                            return response.text();
+                            })
+                        .then((result)=>{
+                            console.log(result);
+                            res.innerHTML = result.nim + '-' + result.nama+ '-' + result.alamat+ '-' + result.fakultas+ '-' + result.program_studi;
+                    });
+                }
+            </script>
+            
+        </body>
+    </html>
